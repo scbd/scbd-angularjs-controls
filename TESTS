@@ -1,0 +1,15 @@
+Autocomplete
+------------
+ * click button and see all possible results
+ * click on input and see all possible results
+ * type in input and see results filtered
+ * up and down arrow to select options
+ * enter to fill in selected option
+ * click to fill in selected option
+ * blur while input matches element
+ * blur while input DOES NOT match element
+ * tab to fill in selected option and go to next input
+ Multiple
+ 	* same tests in displaySpans
+	* remove displaySpans with x
+	* no duplicates in displaySpans
