@@ -486,7 +486,7 @@
                     $element.addClass("list-unstyled");
 
             },
-            controller: ["$scope", "$q", "Thesaurus", '$timeout', function($scope, $q, thesaurus, $timeout) {
+            controller: ["$scope", "$q", "Thesaurus", '$timeout','Enumerable', function($scope, $q, thesaurus, $timeout, Enumerable) {
                 //==============================
                 //
                 //==============================
