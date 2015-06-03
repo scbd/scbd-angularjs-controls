@@ -19,7 +19,7 @@
 	 "bootstrap"                       : "latest",
 	 "bootstrap-datepicker"            : "~1.3.0",
 	 "linqjs"                          : "latest",
-     "scbd-angularjs-services"         : "~1.*",
+     "scbd-angularjs-services"         : "latest",
      "textAngular"                     : "~1.2.2"
   },
   "devDependencies": {
