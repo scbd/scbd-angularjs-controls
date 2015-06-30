@@ -1484,6 +1484,7 @@
                 allowOther: "@",
                 minimumFn: "&minimum",
                 maximumFn: "&maximum",
+                api         : "=?"
             },
             link: function($scope, $element, $attrs, ngModelController) {
                 $scope.identifier = null;
@@ -1531,11 +1532,34 @@
                     });
 
 
-                $scope.$on('clearSelectSelection', function() {
-                    $scope.clearSelection();
+                $scope.$on('clearSelectSelection', function(info) {
+                    $scope.clearSelection(info && info.data ? info.data.identifier : undefined);
                 })
             },
             controller: ["$scope", "$q", "$filter", "$timeout", function($scope, $q, $filter, $timeout) {
+
+                $scope.api = {
+                    unSelectItem : onUnSelectItem,
+                    unSelectAll  : onUnSelectAll,
+                    getItem      : onGetItem,
+                }
+
+                function onUnSelectItem(item){
+                    console.log(item);
+                    if(item.identifier){
+                        $scope.clearSelection(item.identifier);
+                    }
+                }
+
+                function onUnSelectAll(){
+                    $scope.clearSelection();
+                }
+
+
+                function onGetItem(identifier){
+                    return _.find($scope.allItems ,{identifier:identifier});
+                }
+
                 //==============================
                 //
                 //==============================
@@ -1547,7 +1571,8 @@
                                 identifier: d.identifier,
                                 title: d.title || d.name,
                                 children: transform(d.children || d.narrowerTerms),
-                                selected: false
+                                selected: false,
+                                metadata: d.metadata
                             }
                         });
                     }
@@ -1773,21 +1798,17 @@
                 //==============================
                 //
                 //==============================
-                $scope.clearSelection = function() {
-                    _.each($scope.allItems || [], function(item) {
-                        item.selected = false;
-                    });
-
-                    $scope.save();
-                }
-
-                //==============================
-                //
-                //==============================
-                $scope.clearSelection = function() {
-                    _.each($scope.allItems || [], function(item) {
-                        item.selected = false;
-                    });
+                $scope.clearSelection = function(identifier) {
+                    if(!identifier){
+                        _.each($scope.allItems || [], function(item) {
+                            item.selected = false;
+                        });
+                    }
+                    else{
+                        var item = _.find($scope.allItems ,{identifier:identifier});
+                        if(item)
+                            item.selected = false;
+                    }
 
                     $scope.save();
                 }
