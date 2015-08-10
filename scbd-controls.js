@@ -2397,12 +2397,21 @@
 
                     var sTab = qLabel.parents("[km-tab]:first").attr("km-tab");
 
+                    // inner tabs
+                    var sTabName   = qLabel.parents(".tab-pane").attr("id");
+                    var sPagerName = $('a[href$="'+ sTabName + '"]').parents("ul.pagination").attr("id");
+
                     if (sTab) {
                         var qBody = $element.parents("body:last");
 
                         $scope.$parent.tab = sTab;
 
                         $timeout(function jumpTo() {
+
+                            // inner tabs
+                            if(sTabName && sPagerName)
+                                $('#'+sPagerName + ' a[href="#' + sTabName + '"]').tab('show');
+
                             qBody.stop().animate({
                                 scrollTop: qLabel.offset().top - 50
                             }, 300);
