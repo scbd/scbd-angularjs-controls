@@ -2530,6 +2530,7 @@
             replace: true,
             transclude: true,
             scope: {
+                captionClass: '@captionClass',
                 bold: '@bold',
                 name: '@name',
                 caption: '@caption',
