@@ -2530,12 +2530,14 @@
             replace: true,
             transclude: true,
             scope: {
-                bold: '@bold',
                 name: '@name',
                 caption: '@caption',
                 isValidFn: "&isValid"
             },
             link: function($scope, $element, $attr) {
+
+                $scope.bold = $element.attr("bold");
+
                 if ($attr.isValid) {
                     $scope.hasError = function() {
                         return false;
