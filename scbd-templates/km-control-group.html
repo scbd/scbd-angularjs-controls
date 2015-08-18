@@ -1,7 +1,7 @@
 <div class="form-group" ng-class="{ 'has-warning' : hasWarning(), 'has-error' : hasError() }">
-	<label class="control-label"  ng-required="isRequired()" ng-show="caption" for="{{name}}">
-		<strong ng-if='bold'>{{caption}}</strong>
-		<span ng-if='!bold'>{{caption}}</span>
+	<label class="control-label"  ng-required="isRequired()" ng-show="caption" for="{{name}}"
+		ng-class="{'bold': bold=='true'}">
+		{{caption}}
 	</label>
 	<div ng-transclude></div>
 </div>

@@ -2530,6 +2530,7 @@
             replace: true,
             transclude: true,
             scope: {
+                bold: '@bold',
                 name: '@name',
                 caption: '@caption',
                 isValidFn: "&isValid"
