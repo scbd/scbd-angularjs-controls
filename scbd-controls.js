@@ -2536,7 +2536,8 @@
             },
             link: function($scope, $element, $attr) {
 
-                $scope.bold = $element.attr("bold");
+                if($element.attr("bold"))
+                    $scope.bold = true;
 
                 if ($attr.isValid) {
                     $scope.hasError = function() {
