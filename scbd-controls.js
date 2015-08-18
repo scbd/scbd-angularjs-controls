@@ -2530,6 +2530,7 @@
             replace: true,
             transclude: true,
             scope: {
+                bold: '@bold',
                 name: '@name',
                 caption: '@caption',
                 isValidFn: "&isValid"
@@ -2571,6 +2572,7 @@
 
                     return false; //default behavior
                 }
+
 
                 $scope.hasError = function() { //default behavior
 
