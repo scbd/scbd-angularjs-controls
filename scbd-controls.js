@@ -2438,6 +2438,8 @@
                 $scope.$watch('report', function(newVal, oldVal) {
                     if (newVal || oldVal)
                         $scope.onLoad = false;
+
+                    $scope.show=true;
                 })
 
             },
