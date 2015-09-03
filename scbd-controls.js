@@ -2400,12 +2400,21 @@
 
                     var sTab = qLabel.parents("[km-tab]:first").attr("km-tab");
 
+                    // inner tabs
+                    var sTabName   = qLabel.parents(".tab-pane").attr("id");
+                    var sPagerName = $('a[href$="'+ sTabName + '"]').parents("ul.pagination").attr("id");
+
                     if (sTab) {
                         var qBody = $element.parents("body:last");
 
                         $scope.$parent.tab = sTab;
 
                         $timeout(function jumpTo() {
+
+                            // inner tabs
+                            if(sTabName && sPagerName)
+                                $('#'+sPagerName + ' a[href="#' + sTabName + '"]').tab('show');
+
                             qBody.stop().animate({
                                 scrollTop: qLabel.offset().top - 50
                             }, 300);
@@ -2432,6 +2441,8 @@
                 $scope.$watch('report', function(newVal, oldVal) {
                     if (newVal || oldVal)
                         $scope.onLoad = false;
+
+                    $scope.show=true;
                 })
 
             },
@@ -2524,11 +2535,17 @@
             replace: true,
             transclude: true,
             scope: {
+                captionClass: '@captionClass',
+                bold: '@bold',
                 name: '@name',
                 caption: '@caption',
                 isValidFn: "&isValid"
             },
             link: function($scope, $element, $attr) {
+
+                if($element.attr("bold"))
+                    $scope.bold = true;
+
                 if ($attr.isValid) {
                     $scope.hasError = function() {
                         return false;
@@ -2565,6 +2582,7 @@
 
                     return false; //default behavior
                 }
+
 
                 $scope.hasError = function() { //default behavior
 
