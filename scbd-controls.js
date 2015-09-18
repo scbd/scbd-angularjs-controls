@@ -208,7 +208,8 @@
                 locales: '=',
                 rows: '=',
                 required: "@",
-                ngChange: "&"
+                ngChange: "&",
+                toolbar : "@?"
             },
             link: function($scope, element, attrs, ngModelController) {
                 $scope.text = {}
@@ -222,6 +223,8 @@
 
             },
             controller: ["$scope", function($scope) {
+                if(!$scope.toolbar)
+                    $scope.toolbar = "[['bold', 'italics', 'ul', 'ol', 'redo', 'undo', 'clear']]";
                 //==============================
                 //Remove value of not selected languages/empty languages
                 //==============================
