@@ -1487,15 +1487,20 @@
                 allowOther: "@",
                 minimumFn: "&minimum",
                 maximumFn: "&maximum",
-                api         : "=?"
+                api         : "=?",
+                showDescription : '@?'
             },
             link: function($scope, $element, $attrs, ngModelController) {
+
                 $scope.identifier = null;
                 $scope.rootItems = null;
                 $scope.attr = $attrs;
                 $scope.multiple = $attrs.multiple !== undefined && $attrs.multiple !== null;
                 $scope.watchItems = $attrs.watchItems !== undefined && $attrs.watchItems !== null;
                 $scope.displayCount = 3;
+
+                if($scope.showDescription === undefined)
+                    $scope.showDescription = 'false';
 
                 $scope.$watch('identifier', $scope.save);
                 $scope.$watch('items', $scope.load);
@@ -1504,6 +1509,9 @@
                     ngModelController.$setViewValue($scope.binding);
                     if (newBinding)
                         $scope.autoInit().then($scope.load);
+                    // else {
+                    //     $scope.clearSelection();
+                    // }
                 });
 
                 if ($scope.watchItems)
@@ -1575,7 +1583,8 @@
                                 title: d.title || d.name,
                                 children: transform(d.children || d.narrowerTerms),
                                 selected: false,
-                                metadata: d.metadata
+                                metadata: d.metadata,
+                                description: d.description
                             }
                         });
                     }
@@ -1856,6 +1865,7 @@
                 $(document).on('click', '#filterText input', function(e) {
                     e.stopPropagation();
                 });
+
             }]
         }
     })
