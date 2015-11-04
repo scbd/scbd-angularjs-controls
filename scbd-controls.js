@@ -2415,7 +2415,7 @@
                     var sPagerName = $('a[href$="'+ sTabName + '"]').parents("ul.pagination").attr("id");
 
                     if (sTab) {
-                        var qBody = $element.parents("body:last");
+                        var qBody = $element.parents("body,html");
 
                         $scope.$parent.tab = sTab;
 
