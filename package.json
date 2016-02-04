@@ -1,6 +1,6 @@
 {
   "name": "scbd-angularjs-controls",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A collection of angular directives for form controls.",
   "dependencies": {
     "express": "3.4.x",
