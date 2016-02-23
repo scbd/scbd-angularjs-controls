@@ -1,4 +1,4 @@
-define(['app', '../../angular-flex/angular-flex', '../../jquery/jquery.min', '../../lodash/lodash.min', 'text!./km-link.html'], function(app, angular, $, _, template) {
+define(['app', 'angular', 'jquery', 'lodash', 'text!./km-select.html','scbd-filters/l-string','scbd-filters/truncate'], function(app, angular, $, _, template) {
   //============================================================
   //
   //
@@ -21,7 +21,8 @@ define(['app', '../../angular-flex/angular-flex', '../../jquery/jquery.min', '..
         minimumFn: "&minimum",
         maximumFn: "&maximum",
         api: "=?",
-        showDescription: '@?'
+        showDescription: '@?',
+        locale: '@?'
       },
       link: function($scope, $element, $attrs, ngModelController) {
 
@@ -65,7 +66,7 @@ define(['app', '../../angular-flex/angular-flex', '../../jquery/jquery.min', '..
             placement: "top",
             content: function() {
               var oNames = _.map($scope.getTitles(), function(o) {
-                return html.encode(o);
+                return ;//html.encode(o);
               });
 
               if (!oNames || !oNames.length)
@@ -89,7 +90,7 @@ define(['app', '../../angular-flex/angular-flex', '../../jquery/jquery.min', '..
         };
 
         function onUnSelectItem(item) {
-          console.log(item);
+
           if (item.identifier) {
             $scope.clearSelection(item.identifier);
           }
@@ -114,8 +115,8 @@ define(['app', '../../angular-flex/angular-flex', '../../jquery/jquery.min', '..
             data = _.filter(data, _.isObject);
             data = _.map(data, function(d) {
               return {
-                identifier: d.identifier,
-                title: d.title || d.name,
+                identifier: d.identifier || d._id,
+                title: d.title || d.name || d.name[$scope.locale],
                 children: transform(d.children || d.narrowerTerms),
                 selected: false,
                 metadata: d.metadata,
