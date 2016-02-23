@@ -14,7 +14,7 @@ define(['app'  ], function(app ) {
           scope: {
               binding: '=ngModel',
           },
-          controller: ["$scope", "IStorage", function($scope, storage) {
+          controller: ["$scope", function($scope) {
               $scope.locales = [{
                   identifier: "ar",
                   name: "Arabic"

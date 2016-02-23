@@ -1,4 +1,4 @@
-define(['app','text!./km-inputtext-list.html','../../angular-flex/angular-flex'], function(app,template,angular) {
+define(['app','text!./km-inputtext-list.html','angular'], function(app,template,angular) {
 	//============================================================
 	//
 	//
