@@ -60,21 +60,21 @@ define(['app', 'angular', 'jquery', 'lodash', 'text!./km-select.html','scbd-filt
         });
 
         if ($scope.multiple)
-          $element.find('.dropdown-toggle').popover({
-            trigger: "hover",
-            html: true,
-            placement: "top",
-            content: function() {
-              var oNames = _.map($scope.getTitles(), function(o) {
-                return ;//html.encode(o);
-              });
-
-              if (!oNames || !oNames.length)
-                return null;
-
-              return "<ul><li style=\"width:500px;\">" + oNames.join("</li>\n<li>") + "</li></ul>";
-            }
-          });
+          // $element.find('.dropdown-toggle').popover({
+          //   trigger: "hover",
+          //   html: true,
+          //   placement: "top",
+          //   content: function() {
+          //     var oNames = _.map($scope.getTitles(), function(o) {
+          //       return ;//html.encode(o);
+          //     });
+          //
+          //     if (!oNames || !oNames.length)
+          //       return null;
+          //
+          //     return "<ul><li style=\"width:500px;\">" + oNames.join("</li>\n<li>") + "</li></ul>";
+          //   }
+          // });
 
 
         $scope.$on('clearSelectSelection', function(info) {
@@ -296,12 +296,19 @@ define(['app', 'angular', 'jquery', 'lodash', 'text!./km-select.html','scbd-filt
         $scope.save = function() {
           if (!$scope.allItems) // Not initialized
             return;
-
+          var retObj={};
           var oBindings = _.map($scope.getSelectedItems(), function(o) {
-            return {
-              identifier: o.identifier,
-              customValue: o.customValue
-            };
+
+            if(o.customValue)
+              retObj={
+                identifier: o.identifier,
+                customValue: o.customValue
+              };
+              else
+              retObj={
+                identifier: o.identifier,
+              };
+            return retObj;
           });
 
           if ($scope.bindingType == "string" || $scope.bindingType == "string[]")
