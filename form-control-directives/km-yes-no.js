@@ -1,4 +1,4 @@
-define(['app', 'text!./km-yes-no.html','../../jquery/jquery.min'], function(app, template,$) { 'use strict';
+define(['app', 'text!./km-yes-no.html','jquery'], function(app, template,$) { 'use strict';
 		//============================================================
 		//
 		//

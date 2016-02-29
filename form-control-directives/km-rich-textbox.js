@@ -1,4 +1,5 @@
-define(['app','text!./km-rich-textbox.html','../../angular-flex/angular-flex','../../textAngular/dist/textAngular.min'], function(app,template,angular) {
+define(['app','text!./km-rich-textbox.html','angular','text-angular'], function(app,template,angular) {
+
 	//============================================================
 	//
 	//
@@ -20,6 +21,7 @@ define(['app','text!./km-rich-textbox.html','../../angular-flex/angular-flex','.
 							toolbar : "@?"
 					},
 					link: function($scope, element, attrs, ngModelController) {
+
 							$scope.text = {};
 							$scope.$watch('locales', $scope.watchLocales);
 							$scope.$watch('binding', $scope.watchBinding);
@@ -31,6 +33,7 @@ define(['app','text!./km-rich-textbox.html','../../angular-flex/angular-flex','.
 
 					},
 					controller: ["$scope", function($scope) {
+
 							if(!$scope.toolbar)
 									$scope.toolbar = "[['bold', 'italics', 'ul', 'ol', 'redo', 'undo', 'clear']]";
 							//==============================

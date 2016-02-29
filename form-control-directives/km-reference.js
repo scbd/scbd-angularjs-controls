@@ -1,4 +1,4 @@
-define(['app', '../../angular-flex/angular-flex', '../../lodash/lodash.min', '../../jquery/jquery.min', 'text!./km-reference.html','/angular-sanitize/angular-sanitize'], function(app, angular, _, $, template) { 'use strict';
+define(['app', 'angular', 'lodash', 'jquery', 'text!./km-reference.html','angular-sanitize'], function(app, angular, _, $, template) { 'use strict';
     //============================================================
     //
     //

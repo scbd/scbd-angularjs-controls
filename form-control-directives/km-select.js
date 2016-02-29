@@ -32,6 +32,7 @@ define(['app', 'angular', 'jquery', 'lodash', 'text!./km-select.html','scbd-filt
         $scope.multiple = $attrs.multiple !== undefined && $attrs.multiple !== null;
         $scope.watchItems = $attrs.watchItems !== undefined && $attrs.watchItems !== null;
         $scope.displayCount = 3;
+        $scope.noHover =$attrs.noHover !== undefined && $attrs.noHover !== null;
 
         if ($scope.showDescription === undefined)
           $scope.showDescription = 'false';
@@ -59,22 +60,22 @@ define(['app', 'angular', 'jquery', 'lodash', 'text!./km-select.html','scbd-filt
             event.stopPropagation();
         });
 
-        if ($scope.multiple)
-          // $element.find('.dropdown-toggle').popover({
-          //   trigger: "hover",
-          //   html: true,
-          //   placement: "top",
-          //   content: function() {
-          //     var oNames = _.map($scope.getTitles(), function(o) {
-          //       return ;//html.encode(o);
-          //     });
-          //
-          //     if (!oNames || !oNames.length)
-          //       return null;
-          //
-          //     return "<ul><li style=\"width:500px;\">" + oNames.join("</li>\n<li>") + "</li></ul>";
-          //   }
-          // });
+        if ($scope.multiple && !$scope.noHover)
+          $element.find('.dropdown-toggle').popover({
+            trigger: "hover",
+            html: true,
+            placement: "top",
+            content: function() {
+              var oNames = _.map($scope.getTitles(), function(o) {
+                return ;//html.encode(o);
+              });
+
+              if (!oNames || !oNames.length)
+                return null;
+
+              return "<ul><li style=\"width:500px;\">" + oNames.join("</li>\n<li>") + "</li></ul>";
+            }
+          });
 
 
         $scope.$on('clearSelectSelection', function(info) {
