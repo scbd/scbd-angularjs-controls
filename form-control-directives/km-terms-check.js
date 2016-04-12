@@ -16,12 +16,15 @@ define(['app', '../../angular-flex/angular-flex', '../../jquery/jquery.min', 'te
                 bindingType: '@',
                 termsFn: '&terms',
                 required: "@",
-                layout: "@"
+                layout: "@",
+                showDescription : '@?'
             },
             link: function($scope, $element, $attr, ngModelController) {
                 $scope.identifiers = null;
                 $scope.terms = null;
                 $scope.rootTerms = [];
+                if($scope.showDescription === undefined)
+                    $scope.showDescription = 'false';
 
                 $scope.$watch('terms', $scope.onTerms);
                 $scope.$watch('identifier', $scope.save);
