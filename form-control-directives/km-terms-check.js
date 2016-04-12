@@ -16,8 +16,7 @@ define(['app', '../../angular-flex/angular-flex', '../../jquery/jquery.min', 'te
                 bindingType: '@',
                 termsFn: '&terms',
                 required: "@",
-                layout: "@",
-                showDescription : '@?'
+                layout: "@"
             },
             link: function($scope, $element, $attr, ngModelController) {
                 $scope.identifiers = null;
