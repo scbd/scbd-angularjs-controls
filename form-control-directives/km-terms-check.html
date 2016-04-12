@@ -3,6 +3,10 @@
 		<label>
 			<input type="checkbox" ng-model="identifiers[term.identifier]" ng-click="save()" ng-required="IsRequired()" value="{{term.identifier}}" />
 				{{term.title||term.name | lstring:locale}}
+				
+				<span class="km-select-description" ng-if="showDescription=='true' && item.description">
+				    ({{item.description}})
+			    </span>
 		</label>
 
 		<ul style="list-style:none">
