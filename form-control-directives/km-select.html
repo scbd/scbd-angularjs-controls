@@ -1,10 +1,12 @@
 <span>
 	<script type="text/ng-template"  id="select-tree-renderer.html">
-		<a ng-click="clicked(item)" href="">{{item.title||item.name | lstring:locale | truncate:120:'...'}}
-			<span class="km-select-description" ng-if="showDescription=='true' && item.description">
-				({{item.description}})
-			</span>
+		<a ng-click="clicked(item)" href="">
+			{{item.title||item.name | lstring:locale | truncate:120:'...'}}
 		</a>
+		<div class="km-select-description" ng-if="showDescription=='true' && item.description" 
+			style="padding: 3px 25px;">
+			{{item.description}}
+		</div>
 		<i class="glyphicon glyphicon-ok" ng-show="item.selected" style="position:absolute;top:5px;left:3px;"></i>
 		<ul class="dropdown-inline-submenu" ng-if="item.children">
 			<li ng:repeat="item in item.children" ng-include="'select-tree-renderer.html'" style="position:relative">
