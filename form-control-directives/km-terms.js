@@ -1,4 +1,4 @@
-define(['app','../../lodash/lodash.min','../../angular-flex/angular-flex','text!./km-terms.html'], function(app,_,angular,template) {
+define(['app','lodash','angular','text!./km-terms.html'], function(app,_,angular,template) {
 
 	    //============================================================
 	    //

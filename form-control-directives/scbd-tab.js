@@ -4,8 +4,6 @@ define(['app'], function(app) { 'use strict';
       //
       //
       //============================================================
-      app.directive('kmTab', ["$timeout", tabDirective ]);
-      app.directive('scbdTab', ["$timeout", tabDirective ]);
 
       var tabDirective = function($timeout) {
           return {
@@ -39,4 +37,8 @@ define(['app'], function(app) { 'use strict';
               }
           };
       };
+
+
+      app.directive('kmTab', ["$timeout", tabDirective ]);
+      app.directive('scbdTab', ["$timeout", tabDirective ]);
 });

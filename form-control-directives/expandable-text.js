@@ -1,6 +1,4 @@
 define(['app'], function(app) {
-  app.directive('expandableText', directive);
-  app.directive('scbdExpandableText', directive);
   var directive = function() {
       return function($scope, $element) {
           $element.bind('focus', function() {
@@ -16,4 +14,6 @@ define(['app'], function(app) {
           });
       };
   };
+  app.directive('expandableText', directive);
+  app.directive('scbdExpandableText', directive);
 });

@@ -1,4 +1,4 @@
-define(['app', 'angular', 'jquery', 'lodash', 'text!./km-select.html','scbd-filters/l-string','scbd-filters/truncate'], function(app, angular, $, _, template) {
+define(['app', 'angular', 'jquery', 'lodash', 'text!./km-select.html','scbd-angularjs-filters'], function(app, angular, $, _, template) {
   //============================================================
   //
   //
@@ -59,7 +59,7 @@ define(['app', 'angular', 'jquery', 'lodash', 'text!./km-select.html','scbd-filt
             event.stopPropagation();
         });
 
-        if ($scope.multiple)
+        // if ($scope.multiple)
           // $element.find('.dropdown-toggle').popover({
           //   trigger: "hover",
           //   html: true,
@@ -82,6 +82,8 @@ define(['app', 'angular', 'jquery', 'lodash', 'text!./km-select.html','scbd-filt
         });
       },
       controller: ["$scope", "$q", "$filter", "$timeout", function($scope, $q, $filter, $timeout) {
+
+        var revisionRegex =  /@([0-9]{1,3})/;
 
         $scope.api = {
           unSelectItem: onUnSelectItem,
@@ -285,7 +287,9 @@ define(['app', 'angular', 'jquery', 'lodash', 'text!./km-select.html','scbd-filt
 
           angular.forEach($scope.allItems, function(item) {
             item.selected = _.find(oBinding, function(o) {
-              return o.identifier === item.identifier;
+              return o.identifier === item.identifier ||
+                    // if the identifier has revision attached with it remove revison for comparision
+                     o.identifier.replace(revisionRegex,'') === item.identifier.replace(revisionRegex,'');
             }) !== undefined;
           });
         };

@@ -1,4 +1,4 @@
-define(['app', 'text!./lonlat.html', '../../jquery/jquery.min','../../ngLocalizer/localizer'], function(app, template, $) {
+define(['app', 'text!./lonlat.html', 'jquery','angular-localizer'], function(app, template, $) {
   'use strict';
   app.directive('lonlatInput', function() {
     return {

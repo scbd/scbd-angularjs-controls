@@ -1,4 +1,4 @@
-define(['app', 'text!./afc-autocomplete.html','../../jquery/jquery.min','../../lodash/lodash.min','../../ngLocalizer/localizer'], function(app,template,$,_) { 'use strict';
+define(['app', 'text!./afc-autocomplete.html','jquery','lodash','angular-localizer'], function(app,template,$,_) { 'use strict';
     app.directive('afcAutocomplete', function() {
         return {
             restrict: 'AEC',

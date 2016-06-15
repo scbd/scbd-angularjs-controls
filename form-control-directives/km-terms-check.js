@@ -1,4 +1,4 @@
-define(['app', '../../angular-flex/angular-flex', '../../jquery/jquery.min', 'text!./km-terms-check.html', '../../linqjs/linq.min'], function(app, angular, $, template, Enumerable) { 'use strict';
+define(['app', 'angular', 'jquery', 'text!./km-terms-check.html', 'linqjs'], function(app, angular, $, template, Enumerable) { 'use strict';
 
     //============================================================
     //

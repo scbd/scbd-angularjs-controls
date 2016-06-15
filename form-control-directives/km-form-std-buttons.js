@@ -1,4 +1,4 @@
-define(['app', '../../angular-flex/angular-flex', 'text!./km-form-std-buttons.html', '../../jquery/jquery.min'], function(app, angular, template,$) {
+define(['app', 'angular', 'text!./km-form-std-buttons.html', 'jquery'], function(app, angular, template,$) {
   'use strict';
   //============================================================
   //

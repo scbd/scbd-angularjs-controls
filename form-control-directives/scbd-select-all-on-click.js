@@ -1,6 +1,4 @@
 define(['app'], function(app) {
-  app.directive('selectAllOnClick', directive);
-  app.directive('scbdSelectAllOnClick', directive);
   var directive =  function() {
         return {
             restrict: 'A',
@@ -12,4 +10,6 @@ define(['app'], function(app) {
             },
         };
       };
+  app.directive('selectAllOnClick', directive);
+  app.directive('scbdSelectAllOnClick', directive);
 });

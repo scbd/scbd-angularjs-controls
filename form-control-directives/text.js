@@ -1,4 +1,4 @@
-define(['app', 'text!./text.html', '../../jquery/jquery.min', '../../ngLocalizer/localizer','/angular-sanitize/angular-sanitize'], function(app, template, $) {
+define(['app', 'text!./text.html', 'jquery', 'angular-localizer','angular-sanitize'], function(app, template, $) {
   'use strict';
   app.directive('afcText', function() {
     return {

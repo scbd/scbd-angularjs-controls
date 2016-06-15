@@ -1,4 +1,4 @@
-define(['app', 'text!./options.html','../../jquery/jquery.min','../../ngLocalizer/localizer'], function(app, template,$) { 'use strict';
+define(['app', 'text!./options.html','jquery','angular-localizer'], function(app, template,$) { 'use strict';
 app.directive('afcOptions', function() {
 				return {
 						restrict: 'AEC',

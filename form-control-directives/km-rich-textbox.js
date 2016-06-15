@@ -1,4 +1,4 @@
-define(['app','text!./km-rich-textbox.html','../../angular-flex/angular-flex','../../textAngular/dist/textAngular.min'], function(app,template,angular) {
+define(['app','text!./km-rich-textbox.html','angular','textAngular'], function(app,template,angular) {
 	//============================================================
 	//
 	//

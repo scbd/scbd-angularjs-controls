@@ -1,4 +1,4 @@
-define(['app', 'text!./string.html', '../../jquery/jquery.min', '../../ngLocalizer/localizer'], function(app, template, $) {
+define(['app', 'text!./string.html', 'jquery', 'angular-localizer'], function(app, template, $) {
   'use strict';
   app.directive('afcInput', function() {
     return {

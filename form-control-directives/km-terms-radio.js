@@ -1,4 +1,4 @@
-define(['app', '../../angular-flex/angular-flex', '../../jquery/jquery.min','text!./km-terms-radio.html','../../linqjs/linq.min','services/utilities'], function(app,  angular, $, template,Enumerable) { 'use strict';
+define(['app', 'angular', 'jquery','text!./km-terms-radio.html','linqjs','scbd-angularjs-services/utilities'], function(app,  angular, $, template,Enumerable) { 'use strict';
 //need Enumerable
     //============================================================
     //

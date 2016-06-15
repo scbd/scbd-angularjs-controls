@@ -1,4 +1,4 @@
-define(['app','text!./km-notes.html','../../angular-flex/angular-flex'], function(app,template,angular) {
+define(['app','text!./km-notes.html','angular'], function(app,template,angular) {
 
     //============================================================
     //
