@@ -19,6 +19,7 @@ define(['app', 'angular', 'jquery', 'text!./km-terms-check.html', 'linqjs'], fun
                 layout: "@"
             },
             link: function($scope, $element, $attr, ngModelController) {
+				$scope.showDescription = $attr.showDescription == 'true';
                 $scope.identifiers = null;
                 $scope.terms = null;
                 $scope.rootTerms = [];
