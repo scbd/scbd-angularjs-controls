@@ -1,4 +1,6 @@
-define(['app', 'angular', 'jquery', 'lodash', 'text!./km-select.html','scbd-angularjs-filters'], function(app, angular, $, _, template) {
+define(['app', 'angular', 'jquery', 'lodash', 'text!./km-select.html','scbd-angularjs-filters',
+       'scbd-angularjs-services/locale'], 
+function(app, angular, $, _, template) {
   //============================================================
   //
   //
@@ -21,11 +23,11 @@ define(['app', 'angular', 'jquery', 'lodash', 'text!./km-select.html','scbd-angu
         minimumFn: "&minimum",
         maximumFn: "&maximum",
         api: "=?",
-        showDescription: '@?',
-        locale: '@?'
+        showDescription: '@?'
+        // ,locale: '@?'
       },
       link: function($scope, $element, $attrs, ngModelController) {
-
+       
         $scope.identifier = null;
         $scope.rootItems = null;
         $scope.attr = $attrs;
@@ -81,9 +83,12 @@ define(['app', 'angular', 'jquery', 'lodash', 'text!./km-select.html','scbd-angu
           $scope.clearSelection(info && info.data ? info.data.identifier : undefined);
         });
       },
-      controller: ["$scope", "$q", "$filter", "$timeout", function($scope, $q, $filter, $timeout) {
+      controller: ["$scope", "$q", "$filter", "$timeout", "locale", function($scope, $q, $filter, $timeout, locale) {
 
         var revisionRegex =  /@([0-9]{1,3})/;
+        
+        $scope.currentLocale = locale;
+
 
         $scope.api = {
           unSelectItem: onUnSelectItem,
@@ -118,7 +123,7 @@ define(['app', 'angular', 'jquery', 'lodash', 'text!./km-select.html','scbd-angu
             data = _.map(data, function(d) {
               return {
                 identifier: d.identifier || d._id,
-                title: d.title || d.name || d.name[$scope.locale],
+                title: d.title || d.name || d.name[$scope.currentLocale],
                 children: transform(d.children || d.narrowerTerms),
                 selected: false,
                 metadata: d.metadata,
@@ -218,7 +223,7 @@ define(['app', 'angular', 'jquery', 'lodash', 'text!./km-select.html','scbd-angu
         //==============================
         $scope.getTitles = function() {
           return _.map($scope.getSelectedItems(), function(o) {
-            return $filter("lstring")(o.title || o.name, $scope.locale);
+            return $filter("lstring")(o.title || o.name, $scope.currentLocale);
           });
         };
 

@@ -1,7 +1,7 @@
 <span>
 	<script type="text/ng-template"  id="select-tree-renderer.html">
 		<a ng-click="clicked(item)" href="">
-			{{item.title||item.name | lstring:locale | truncate:120:'...'}}
+		{{item.title||item.name | lstring:currentLocale | truncate:120:'...'}}
 		</a>
 		<div class="km-select-description" ng-if="showDescription=='true' && item.description" 
 			style="padding: 3px 25px;">

@@ -1,4 +1,4 @@
-define(['app', 'text!./afc-autocomplete.html','jquery','lodash','angular-localizer'], function(app,template,$,_) { 'use strict';
+define(['app', 'text!./afc-autocomplete.html','jquery','lodash','angular-localizer', 'scbd-angularjs-services/locale'], function(app,template,$,_) { 'use strict';
     app.directive('afcAutocomplete', function() {
         return {
             restrict: 'AEC',
@@ -17,7 +17,11 @@ define(['app', 'text!./afc-autocomplete.html','jquery','lodash','angular-localiz
                 windowsScrollbarCompatible: '@?',
             },
             template: template,
-            controller: function($scope, $element, $attrs, $compile, $timeout, $q) {
+            controller: function($scope, $element, $attrs, $compile, $timeout, $q, locale, $filter) {
+                
+                $scope.currentLocale = locale;
+
+                
                 //////Event Code////////
                 $scope.updateSelected = function(index) {
                     $scope.selected = index;
@@ -131,7 +135,7 @@ define(['app', 'text!./afc-autocomplete.html','jquery','lodash','angular-localiz
                         $scope.removeSpan(spliceIndex); //delete it, because we're "unselecting" it with a click.
                     else {
                         $scope.binding.push(mapping); //add what we clicked.
-                        $scope.displaySpans.push(element.__value);
+                        $scope.displaySpans.push($filter("lstring")(element.title, $scope.currentLocale));
                     }
                 }
                 ////////////END ENTER CODE
@@ -264,7 +268,7 @@ define(['app', 'text!./afc-autocomplete.html','jquery','lodash','angular-localiz
                                     for (var i = 0; i != results.length; ++i)
                                         if (results[i].__value == string) {
                                             $scope.binding.push(results[i]);
-                                            $scope.displaySpans.push(results[0].__value);
+                                            $scope.displaySpans.push($filter("lstring")(results[0].title, $scope.currentLocale));
                                         }
 
                                     $scope.bindingDisplay = '';
@@ -323,7 +327,7 @@ define(['app', 'text!./afc-autocomplete.html','jquery','lodash','angular-localiz
                     var foundItem = '';
                     _.each(items, function(item) {
                         if (JSON.stringify($scope.mapping(item)) == JSON.stringify(value))
-                            foundItem = item.__value;
+                            foundItem = $filter("lstring")(item.title, $scope.currentLocale);
                     });
                     //TODO: add error, for if no item matched
 
@@ -346,7 +350,7 @@ define(['app', 'text!./afc-autocomplete.html','jquery','lodash','angular-localiz
                     throw "You can't have a mapping without a selectbox. Mappings are only for selectbox configurations.";
                 if (!$scope.mapping)
                     $scope.mapping = function(item) {
-                        return item.__value;
+                        return $filter("lstring")(item.title, $scope.currentLocale);
                     };
                 if (!$scope.filter)
                     $scope.filter = function($query, items) {
